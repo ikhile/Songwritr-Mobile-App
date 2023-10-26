@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!--https://coolors.co/4bc6b9-73c1c6-96c3ce-a79ab2-b57ba6-->
+    <color name="medium_turquoise">#4bc6b9</color>
+<!--    <color name="maximum_blue_green">#73c1c6</color>-->
+    <color name="dark_sky_blue">#96c3ce</color>
+    <color name="heliotrope_gray">#a79ab2</color>
+    <color name="opera_mauve">#b57ba6</color>
+<!--https://coolors.co/095256-087f8c-5aaa95-86a873-bb9f06-->
+    <color name="metallic_seaweed">#087f8c</color>
+    <color name="deep_jungle_green">#095256</color>
+    <color name="polished_pine">#5aaa95</color>
+    <color name="asparagus">#86a873</color>
+    <color name="lemon_curry">#bb9f06</color>
+<!--    https://coolors.co/0b132b-73c1c6-1c2541-3a506b-a4243b-->
+    <color name="maximum_blue_green">#73c1c6</color>
+    <color name="oxford_blue">#0b132b</color>
+    <color name="space_cadet">#1c2541</color>
+    <color name="y_in_mn_blue">#3a506b</color>
+    <color name="vivid_burgundy">#a4243b</color>
+
+    <color name="star_orange">#FFA500</color>
+</resources>

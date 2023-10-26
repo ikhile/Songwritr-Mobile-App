@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PromptsActivity">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/space_cadet"-->
+<!--        android:foregroundTint="#FFFFFF"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:title="Prompts"-->
+<!--        app:titleTextColor="@color/white" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintToolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/space_cadet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/toolbarHome"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_outline_home_24" />
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Prompts"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/quotePromptBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/maximum_blue_green"
+        android:onClick="promptBtnPressed"
+        android:text="Get Quote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintToolbar" />
+
+    <Button
+        android:id="@+id/imagePromptBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/maximum_blue_green"
+        android:onClick="promptBtnPressed"
+        android:text="Get Image"
+        app:layout_constraintBottom_toBottomOf="@+id/quotePromptBtn"
+        app:layout_constraintEnd_toStartOf="@+id/quotePromptBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quotePromptBtn" />
+
+    <ImageButton
+        android:id="@+id/increaseWordsBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#00FFFFFF"
+        android:onClick="wordNumBtnPressed"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/wordPromptBtn"
+        app:layout_constraintEnd_toEndOf="@+id/wordPromptBtn"
+        app:layout_constraintStart_toStartOf="@+id/wordPromptBtn"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24"
+        app:tint="@color/deep_jungle_green" />
+
+    <ImageButton
+        android:id="@+id/decreaseWordsBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#00FFFFFF"
+        android:onClick="wordNumBtnPressed"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/wordPromptBtn"
+        app:layout_constraintStart_toStartOf="@+id/wordPromptBtn"
+        app:layout_constraintTop_toBottomOf="@+id/wordPromptBtn"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
+        app:tint="@color/deep_jungle_green" />
+
+    <Button
+        android:id="@+id/wordPromptBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/maximum_blue_green"
+        android:onClick="promptBtnPressed"
+        android:text="Get X Words"
+        app:layout_constraintBottom_toBottomOf="@+id/quotePromptBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/quotePromptBtn"
+        app:layout_constraintTop_toTopOf="@+id/quotePromptBtn" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/increaseWordsBtn"-->
+<!--        android:layout_width="42dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:onClick="wordNumBtnPressed"-->
+<!--        android:text="+"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/wordPromptBtn"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/wordPromptBtn"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/wordPromptBtn" />-->
+
+    <!--    <Button-->
+<!--        android:id="@+id/decreaseWordsBtn"-->
+<!--        android:layout_width="44dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:onClick="wordNumBtnPressed"-->
+<!--        android:text="-"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/wordPromptBtn"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/wordPromptBtn"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/wordPromptBtn" />-->
+
+    <Button
+        android:id="@+id/usePromptBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/vivid_burgundy"
+        android:onClick="useBtnPressed"
+        android:text="Use This Prompt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagePromptView"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:background="#D5D5D5"
+        app:layout_constraintBottom_toTopOf="@+id/usePromptBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quotePromptBtn"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/loadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/usePromptBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quotePromptBtn" />
+
+    <TextView
+        android:id="@+id/imagePromptAttr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/imagePromptView"
+        app:layout_constraintTop_toBottomOf="@+id/imagePromptView" />
+
+    <TextView
+        android:id="@+id/wordsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:fadeScrollbars="false"
+        android:gravity="center_vertical"
+        android:isScrollContainer="true"
+        android:lineSpacingExtra="8sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="12dp"
+        android:scrollbarSize="8dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        android:text="[Words Go Here]"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/usePromptBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quotePromptBtn" />
+
+    <TextView
+        android:id="@+id/quoteView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Quote Goes Here]"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/usePromptBtn"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/quotePromptBtn" />
+
+    <TextView
+        android:id="@+id/quoteAuthorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:text="[Author Goes Here]"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/quoteView"
+        app:layout_constraintTop_toBottomOf="@+id/quoteView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

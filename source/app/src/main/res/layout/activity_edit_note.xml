@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditNoteActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintToolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/space_cadet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/favBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="favourite/unfavourite note"
+            android:onClick="favBtnPressed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_star_outline_24" />
+
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:cropToPadding="false"
+            android:onClick="deleteBtnPressed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/toolbarHome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
+
+        <ImageButton
+            android:id="@+id/toolbarHome"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_outline_home_24" />
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="backBtnPressed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+        <ImageButton
+            android:id="@+id/attachAudioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="attachAudioPressed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recordBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_playlist_add_24" />
+
+        <ImageButton
+            android:id="@+id/recordBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="recordNewPressed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_mic_24" />
+
+        <LinearLayout
+            android:id="@+id/goToDictGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:onClick="goToDictPressed"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/attachAudioBtn"
+            app:layout_constraintStart_toEndOf="@+id/backBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/goToDictBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="goToDictPressed"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_baseline_menu_book_24" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/goToDictBtn"
+                android:text="search in dictionary"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/promptAudioLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintToolbar">
+
+        <LinearLayout
+            android:id="@+id/promptAudioBtnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/showHidePromptLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="showHidePrompt"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:ignore="TouchTargetSizeCheck">
+
+                <TextView
+                    android:id="@+id/showPromptText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@id/showPromptBtn"
+                    android:text="Prompt" />
+
+                <ImageButton
+                    android:id="@+id/showPromptBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
+                    app:tint="@color/space_cadet" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/showHideAudioLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="showHideAudio"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:ignore="TouchTargetSizeCheck">
+
+                <TextView
+                    android:id="@+id/showAudioText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@id/showAudioBtn"
+                    android:text="Audio" />
+
+                <ImageButton
+                    android:id="@+id/showAudioBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
+                    app:tint="@color/space_cadet" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/promptAudioWindowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/promptLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/heliotrope_gray"
+                android:padding="8dp"
+                android:visibility="gone"
+                app:layout_constrainedWidth="true"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/promptImageV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="12dp"
+                    android:adjustViewBounds="true"
+                    android:foregroundGravity="left"
+                    android:maxHeight="150dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/promptTextV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/promptTextV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="prompt layout text"
+                    android:textColor="@android:color/white"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/promptImageV" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/audioLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_sky_blue"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mediaPlayerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/white"
+                    android:elevation="8dp"
+                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/audioName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:gravity="center|center_horizontal"
+                        android:isScrollContainer="false"
+                        android:padding="4dp"
+                        android:scrollHorizontally="false"
+                        android:text="Audio"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/durationText"
+                        app:layout_constraintStart_toEndOf="@id/currentTimeText"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/currentTimeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="00:00"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/seekbar"
+                        app:layout_constraintStart_toEndOf="@+id/playPauseBtn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/durationText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:padding="2dp"
+                        android:text="00:00"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/removeAudioBtn"
+                        app:layout_constraintStart_toEndOf="@+id/seekbar"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/playPauseBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:onClick="onPlayPause"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/audioName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+                        app:tint="@color/space_cadet" />
+
+                    <ImageButton
+                        android:id="@+id/removeAudioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:onClick="audioRemovePressed"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toStartOf="@id/editAudioBtn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_playlist_remove_24"
+                        app:tint="@color/space_cadet" />
+
+                    <ImageButton
+                        android:id="@+id/editAudioBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:onClick="audioEditPressed"
+                        android:padding="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_baseline_edit_24"
+                        app:tint="@color/space_cadet" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/audioRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#51FFFFFF"
+                    app:layout_constraintHeight_max="300dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/titleEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:textIsSelectable="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promptAudioLayout"
+        app:layout_wrapBehaviorInParent="horizontal_only"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/bodyEdit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="Body"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida scelerisque finibus. Vestibulum sodales orci sed quam pharetra condimentum. Phasellus euismod, ipsum eget euismod euismod, orci nibh aliquam ipsum, vel venenatis augue nisl sed leo. Nunc tincidunt porttitor velit nec venenatis. Phasellus nibh est, varius quis congue non, tristique varius lacus. Integer imperdiet pharetra est eu consequat. Nam mollis dapibus leo ac vulputate. Vestibulum facilisis arcu sed lobortis sagittis. Nulla tristique, odio quis tristique aliquet, quam magna malesuada nisi, ac mollis ligula tellus eu lectus. Maecenas laoreet metus at rutrum porta.  Vivamus sit amet velit sit amet metus lacinia ultricies at in lectus. Nam in cursus odio. Sed vel ligula neque. Sed suscipit quam non purus mollis varius. Integer vulputate urna urna, non lacinia eros rutrum et. Aliquam ex lorem, ullamcorper in libero sed, finibus laoreet dui. In vitae libero quis mauris fermentum varius at id erat. Praesent sit amet elementum augue, in semper enim. Praesent aliquam, libero a egestas gravida, ante neque faucibus nisi, sit amet dignissim justo odio non velit. Sed nec condimentum lorem, sit amet pretium nisi. Integer fermentum fermentum nisl, eu volutpat nibh dignissim et. In consequat consectetur est, at scelerisque diam varius id. Donec aliquet, lectus in tincidunt mattis, urna turpis convallis leo, et vehicula urna libero at ipsum. Sed mollis justo feugiat dui tempor gravida. Vestibulum nec molestie magna. Pellentesque ultricies urna consectetur massa molestie ullamcorper.  Aliquam nec venenatis arcu, vel laoreet nibh. Praesent congue nisl in mollis blandit. Curabitur malesuada arcu vitae sem viverra sagittis. Nullam a gravida massa, pretium ultrices ex. Integer quis rhoncus dolor. Nunc scelerisque metus aliquet varius fringilla. Integer finibus, enim vitae efficitur sagittis, turpis tellus vehicula justo, ut vulputate nibh felis sed eros. Aliquam ullamcorper odio nec massa ornare molestie. Cras rhoncus nulla diam, quis vehicula neque ornare ut. Cras suscipit arcu leo, eu pharetra felis facilisis at. Curabitur molestie id urna et viverra. Etiam quam velit, finibus vel tincidunt id, facilisis eget tortor.  Mauris et tellus erat. Donec quis mi placerat, convallis urna convallis, dictum augue. Nulla facilisis ut lectus vitae ullamcorper. Pellentesque consectetur elit est, eu consectetur ex condimentum id. Etiam dui ligula, suscipit at nibh id, suscipit facilisis dolor. Maecenas et est eu turpis mattis commodo sed quis leo. Duis nisi nulla, consequat sed diam et, placerat volutpat odio. Ut vel egestas felis, vitae pharetra nibh. Nullam molestie enim aliquet nibh tempus, in imperdiet lectus iaculis. Sed at mauris id felis volutpat eleifend. Quisque sed gravida turpis. Sed blandit sed nulla et finibus. In congue quam nibh, non imperdiet augue sagittis nec.  Maecenas vitae faucibus ex, quis vehicula dui. Aliquam at felis neque. Quisque iaculis lobortis arcu, id maximus lacus mattis a. Aenean dictum diam ac est varius, et viverra ipsum interdum. Phasellus rhoncus, diam in porta iaculis, ligula ante semper leo, sed maximus urna sem in turpis. In nec nisi diam. Nam egestas in libero id volutpat. Donec eget eros a mi consectetur commodo sed vel turpis. Curabitur tristique et orci a fermentum. Donec felis ipsum, mollis pharetra aliquet eu, varius et neque. Pellentesque aliquam metus vel ligula condimentum, sed scelerisque quam euismod. Proin suscipit egestas ligula, quis facilisis ipsum fringilla nec. Quisque purus felis, rutrum dictum placerat nec, consequat porta purus. Fusce sit amet sem finibus, lobortis turpis at, iaculis nulla. Aliquam molestie gravida justo, in cursus mauris dapibus sed."
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleEdit"
+        app:layout_wrapBehaviorInParent="included"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/closeAttachLayoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@color/dark_sky_blue"
+        android:backgroundTint="@color/dark_sky_blue"
+        android:onClick="hideAttachAudio"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/attachAudioRecycler"
+        app:layout_constraintTop_toTopOf="@+id/attachAudioRecycler"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/attachAudioRecycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/dark_sky_blue"
+        android:maxHeight="100dp"
+        android:padding="2dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHeight_max="250dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toBottomOf="@+id/constraintToolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="160dp"
+        app:layout_constraintGuide_percent=".25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="387dp"
+        app:layout_constraintGuide_percent=".75" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

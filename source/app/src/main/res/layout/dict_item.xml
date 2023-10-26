@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="1dp">
+
+    <TextView
+        android:id="@+id/itemTextV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="center|start"
+        android:text="[text]"
+        android:textColor="#000000"
+        android:textIsSelectable="true"
+        android:textSize="16sp" /> <!-- src https://developer.android.com/develop/ui/views/text-and-emoji/autosizing-textview#default -->
+
+</LinearLayout>

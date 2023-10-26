@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Songwritr</string>
+    <string name="sort_newest_first">Newest to Oldest</string>
+    <string name="sort_oldest_first">Oldest to Newest</string>
+    <string name="prompt_loading_text">Loading…</string>
+    <string name="intent_audio_id_key">audio id</string>
+    <string name="intent_note_id_key">note id</string>
+    <string name="intent_word_key">word</string>
+    <string name="intent_has_prompt_key">has prompt</string>
+    <string name="intent_prompt_type_key">prompt type</string>
+    <string name="intent_prompt_data_key">prompt data</string>
+    <string name="intent_show_audio_pane">show audio pane</string>
+    <string name="connect_to_internet">You are not connected to the Internet.\nPlease connect to a network and try again.</string>
+</resources>
